@@ -1,0 +1,56 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Employees</h4>
+          </div>
+          <div class="card-body">
+            <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="createEmployee()">Create
+              Employee</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Id
+                  </th>
+                  <th>
+                    First Name
+                  </th>
+                  <th>
+                    Last Name
+                  </th>
+                  <th>
+                    Email
+                  </th>
+                  <th>
+                    Actions
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let employee of employees">
+                    <td>{{ employee.employeeId }}</td>
+                    <td>{{ employee.firstName }}</td>
+                    <td>{{ employee.lastName }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>
+                      <button mat-raised-button class="btn btn-sm btn-info"
+                        (click)="showDetail(employee.tasks)">Detail</button>
+                      <button mat-raised-button class="btn btn-sm btn-warning"
+                        (click)="editEmployee(employee)">Edit</button>
+                      <button mat-raised-button class="btn btn-sm btn-danger"
+                        (click)="deleteEmployee(employee.employeeId)">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

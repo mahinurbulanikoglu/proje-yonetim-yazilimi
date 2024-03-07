@@ -1,0 +1,69 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Tasks</h4>
+          </div>
+          <div class="card-body">
+            <button mat-raised-button type="submit" class="btn btn-success pull-right" (click)="createTask()">Create
+              Task</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Id
+                  </th>
+                  <th>
+                    Task Name
+                  </th>
+                  <th>
+                    Start Date
+                  </th>
+                  <th>
+                    Due Date
+                  </th>
+                  <th>
+                    Delay Amount
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                  <th>
+                    Assigned To
+                  </th>
+                  <th>
+                    Project
+                  </th>
+                  <th>
+                    Actions
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let task of tasks">
+                    <td>{{ task.taskId }}</td>
+                    <td>{{ task.taskName }}</td>
+                    <td>{{ task.startDate }}</td>
+                    <td>{{ task.dueDate }}</td>
+                    <td>{{ task.delayAmount }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>{{ task.assignedTo?.firstName }} {{ task.assignedTo?.lastName }}</td>
+                    <td>{{ task.project?.projectName }}</td>
+                    <td>
+                      <button mat-raised-button class="btn btn-sm btn-warning" (click)="editTask(task)">Edit</button>
+                      <button mat-raised-button class="btn btn-sm btn-danger"
+                        (click)="deleteTask(task.taskId)">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

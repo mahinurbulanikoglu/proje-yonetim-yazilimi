@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+
+
+  <form>
+    <div class="row">
+      <div class="col-md-5">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Project Name" [value]="name" (input)="name = $event.target.value">
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Start Date" [value]="selectedDate | date: 'yyyy-MM-dd'"
+            (dateChange)="updateSelectedDate($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker2" placeholder="End Date" [value]="endDate | date: 'yyyy-MM-dd'"
+            (dateChange)="updateEndDate($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-5">
+        <mat-checkbox [checked]="status" (change)="status = !status">Active</mat-checkbox>
+      </div>
+
+      
+    </div>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onCreateProjectClick()">Save</button>
+</mat-dialog-actions>

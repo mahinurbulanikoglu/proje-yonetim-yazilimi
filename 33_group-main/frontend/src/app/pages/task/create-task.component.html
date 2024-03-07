@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+  <form>
+    <div class="row">
+      <div class="col-md-5">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Task Name" [value]="name" (input)="name = $event.target.value">
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Start Date" [value]="selectedDate | date: 'yyyy-MM-dd'"
+            (dateChange)="updateSelectedDate($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-5">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker2" placeholder="Due Date" [value]="dueDate | date: 'yyyy-MM-dd'"
+            (dateChange)="updateDueDate($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <mat-form-field>
+          <mat-label>Employee</mat-label>
+          <mat-select [(value)]="selectedEmployee" [compareWith]="compareEmployees">
+            <mat-option *ngFor="let employee of employees" [value]="employee">
+              {{ employee.firstName }} {{ employee.lastName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <mat-form-field>
+          <mat-label>Project</mat-label>
+          <mat-select [(value)]="selectedProject" [compareWith]="compareProjects">
+            <mat-option *ngFor="let project of projects" [value]="project">
+              {{ project.projectName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select [(value)]="status">
+            <mat-option *ngFor="let status of statusOptions" [value]="status">
+              {{ status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+    </div>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onCreateTaskClick()">Save</button>
+</mat-dialog-actions>

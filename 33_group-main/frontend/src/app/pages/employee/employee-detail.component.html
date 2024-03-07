@@ -1,0 +1,53 @@
+<mat-dialog-content>
+    <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title ">Tasks</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Id
+                </th>
+                <th>
+                  Task Name
+                </th>
+                <th>
+                  Start Date
+                </th>
+                <th>
+                  Due Date
+                </th>
+                <th>
+                  Delay Amount
+                </th>
+                <th>
+                  Status
+                </th>
+                <th>
+                  Project Name
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let task of tasks">
+                  <td>{{ task.taskId }}</td>
+                  <td>{{ task.taskName }}</td>
+                  <td>{{ task.startDate }}</td>
+                  <td>{{ task.dueDate }}</td>
+                  <td>{{ task.delayAmount }}</td>
+                  <td>{{ task.status }}</td>
+                  <td>{{ task.project?.projectName }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>Tamamlanan Task Sayısı: {{doneCount}} &nbsp; Tamamlanacak Task Sayısı: {{willBeDoneCount}} &nbsp; Devam Eden Task Sayısı: {{continueCount}}</p>
+        </div>
+      </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+</mat-dialog-actions>
